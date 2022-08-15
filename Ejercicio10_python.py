@@ -1,9 +1,9 @@
 import math
 
 
-def areaTriangulo(base=0.0, altura=0.0):
+def areaTriangulo(base: float, altura: float) -> float:
     return (altura * base) / 2
 
 
-def areaCirculo(radio=0.0):
+def areaCirculo(radio: float) -> float:
     return math.pi() * radio ** 2
