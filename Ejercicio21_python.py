@@ -1,27 +1,26 @@
-import sys
-import tkinter
-from tkinter import ttk
+from tkinter import *
 
+def seleccionar():
+    monitor.config(text="{}".format(opcion.get()))
+def reset():
+    opcion.set(None)
+    monitor.config(text="")
 
+root = Tk()
+opcion = StringVar()
+opcion.set(None)
+Radiobutton(root, text="Peugeot", variable=opcion,
+            value='Peugeot', command=seleccionar).pack(anchor=W)
 
-window = tkinter.Tk()
+Radiobutton(root, text="Opel", variable=opcion,
+            value='Opel', command=seleccionar).pack(anchor=W)
+Radiobutton(root, text="Renault", variable=opcion,
+            value='Renault', command=seleccionar).pack(anchor=W)
+Radiobutton(root, text="Seat", variable=opcion,
+            value='Seat', command=seleccionar).pack(anchor=W)
 
-def reiniciar(event):
-    global selected
-    del selected
+monitor = Label(root)
+monitor.pack()
+Button(root, text="Reiniciar", command=reset).pack()
 
-selected = tkinter.StringVar()
-
-r1 = ttk.Radiobutton(window, text='Si', value='1', variable=selected)
-r1.grid(column=0,row=1, padx=5,pady=5)
-r2 = ttk.Radiobutton(window, text='No', value='2', variable=selected)
-r2.grid(column=0,row=2, padx=5,pady=5)
-r3 = ttk.Radiobutton(window, text='Quizá', value='3', variable=selected)
-r3.grid(column=0,row=3, padx=5,pady=5)
-
-boton = tkinter.Button(window, text='Reiniciar')
-boton.grid(column=0,row=4, padx=5,pady=5)
-boton.bind('<Button-1>', reiniciar)
-
-
-window.mainloop()
+root.mainloop()
